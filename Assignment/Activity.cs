@@ -10,5 +10,6 @@ namespace Assignment
 
     public class Activity
     {
+        public int MyProperty { get; set; }
     }
 }
