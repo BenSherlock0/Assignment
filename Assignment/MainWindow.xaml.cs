@@ -123,10 +123,21 @@ namespace Assignment
         {
             Activity selectedactivity = lbxAll.SelectedItem as Activity;
 
-            if(selectedactivities != null)
+            if(selectedactivity != null)
             {
                 activities.Remove(selectedactivity);
                 selectedactivities.Add(selectedactivity);
+            }
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Activity selectedactivty = lbxSelected.SelectedItem as Activity;
+
+            if(selectedactivty != null)
+            {
+                selectedactivities.Remove(selectedactivty);
+                activities.Add(selectedactivty);
             }
         }
     }
