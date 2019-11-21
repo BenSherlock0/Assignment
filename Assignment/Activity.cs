@@ -6,10 +6,39 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    public enum type { Land,Water,Air}
+    public enum ActivityType { Water,Air,Land}
 
-    public class Activity
+    public class Activity : IComparable
     {
-        public int MyProperty { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; } 
+        public DateTime ActivityDate { get; set; }
+        public ActivityType TypeOfActivity { get; set; }
+        public decimal Cost { get; set; }
+
+        public Activity (string name,string description,DateTime activityDate, ActivityType typeOfActivity, decimal cost)
+        {
+            Name = name;
+            Description = description;
+            ActivityDate = activityDate;
+            TypeOfActivity = typeOfActivity;
+            Cost = cost;
+
+        }
+        public Activity()
+        {
+
+        }
+
+        public int CompareTo(object obj)
+        {
+            Activity that = (Activity)obj;
+            return this.ActivityDate.CompareTo(that.ActivityDate);
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}-{ActivityDate.ToShortDateString()}";
+        }
     }
 }

@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <RadioButton Content="All" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top"/>
-        <ListBox HorizontalAlignment="Left" Height="238" Margin="139,82,0,0" VerticalAlignment="Top" Width="198"/>
+        <ListBox x:Name="lbxAll" HorizontalAlignment="Left" Height="238" Margin="139,82,0,0" VerticalAlignment="Top" Width="198"/>
         <ListBox HorizontalAlignment="Left" Height="238" Margin="543,82,0,0" VerticalAlignment="Top" Width="197"/>
         <Button Content="&gt;&gt;" HorizontalAlignment="Left" Margin="403,130,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="&lt;&lt;" HorizontalAlignment="Left" Margin="403,205,0,0" VerticalAlignment="Top" Width="75"/>
