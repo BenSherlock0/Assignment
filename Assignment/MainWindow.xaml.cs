@@ -148,5 +148,39 @@ namespace Assignment
                 MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
         }
+
+
+        private void LbxAll_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Activity selectedactivty = lbxAll.SelectedItem as Activity;
+
+                string description = selectedactivty.Description;
+
+                txtblkDescription.Text = description;
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void LbxSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Activity selectedactivty = lbxSelected.SelectedItem as Activity;
+
+                string description = selectedactivty.Description;
+
+                txtblkDescription.Text = description;
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
