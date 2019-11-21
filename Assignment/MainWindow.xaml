@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <RadioButton Content="All" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lbxAll" HorizontalAlignment="Left" Height="238" Margin="139,82,0,0" VerticalAlignment="Top" Width="198"/>
-        <ListBox HorizontalAlignment="Left" Height="238" Margin="543,82,0,0" VerticalAlignment="Top" Width="197"/>
-        <Button Content="&gt;&gt;" HorizontalAlignment="Left" Margin="403,130,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="&lt;&lt;" HorizontalAlignment="Left" Margin="403,205,0,0" VerticalAlignment="Top" Width="75"/>
+        <ListBox x:Name="lbxSelected" HorizontalAlignment="Left" Height="238" Margin="543,82,0,0" VerticalAlignment="Top" Width="197"/>
+        <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="403,130,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
+        <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="403,205,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Activity Planner" HorizontalAlignment="Left" Margin="153,18,0,0" VerticalAlignment="Top" FontSize="22" Foreground="#FF7DE4DB"/>
         <Label Content="All activities" HorizontalAlignment="Left" Margin="153,51,0,0" VerticalAlignment="Top"/>
         <Label Content="Selected Activities" HorizontalAlignment="Left" Margin="543,51,0,0" VerticalAlignment="Top"/>

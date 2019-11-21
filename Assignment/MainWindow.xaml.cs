@@ -22,12 +22,19 @@ namespace Assignment
     public partial class MainWindow : Window
     {
         ObservableCollection<Activity> activities = new ObservableCollection<Activity>();
+        ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>();
         public MainWindow()
         {
             InitializeComponent();
             lbxAll.ItemsSource = activities;
+            lbxSelected.ItemsSource = selectedactivities;
 
-            Activity l1 = new Activity("Treking","Instructor led group trek through local mountains.",new DateTime(2019, 06, 01),ActivityType.Land,20m);
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Activity l1 = new Activity("Treking", "Instructor led group trek through local mountains.", new DateTime(2019, 06, 01), ActivityType.Land, 20m);
 
             Activity l2 = new Activity()
             {
@@ -110,6 +117,17 @@ namespace Assignment
             activities.Add(a1);
             activities.Add(a2);
             activities.Add(a3);
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Activity selectedactivity = lbxAll.SelectedItem as Activity;
+
+            if(selectedactivities != null)
+            {
+                activities.Remove(selectedactivity);
+                selectedactivities.Add(selectedactivity);
+            }
         }
     }
 }
