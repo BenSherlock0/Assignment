@@ -24,6 +24,7 @@ namespace Assignment
         ObservableCollection<Activity> activities = new ObservableCollection<Activity>();
         ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>();
         ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>();
+        
 
         static decimal TotalCost = 0;
         public MainWindow()
@@ -33,11 +34,19 @@ namespace Assignment
             lbxSelected.ItemsSource = selectedactivities;
 
 
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Activity l1 = new Activity("Treking", "Instructor led group trek through local mountains.", new DateTime(2019, 06, 01), ActivityType.Land, 20m);
+            Activity l1 = new Activity()
+            {
+                Name = "Treking",
+                Description = "Instructor led group trek through local mountains.",
+                ActivityDate = new DateTime(2019, 06, 01),
+                TypeOfActivity = ActivityType.Land,
+                Cost = 20m
+            };
 
             Activity l2 = new Activity()
             {
@@ -120,6 +129,13 @@ namespace Assignment
             activities.Add(a1);
             activities.Add(a2);
             activities.Add(a3);
+
+            List<Activity> sorted = activities.ToList();
+            sorted.Sort();
+            activities = new ObservableCollection<Activity>(sorted);
+            lbxAll.ItemsSource = null;
+            lbxAll.ItemsSource = activities;
+
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)

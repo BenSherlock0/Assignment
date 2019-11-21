@@ -16,15 +16,15 @@ namespace Assignment
         public ActivityType TypeOfActivity { get; set; }
         public decimal Cost { get; set; }
 
-        public Activity (string name,string description,DateTime activityDate, ActivityType typeOfActivity, decimal cost)
-        {
-            Name = name;
-            Description = description;
-            ActivityDate = activityDate;
-            TypeOfActivity = typeOfActivity;
-            Cost = cost;
+        //public Activity (string name,string description,DateTime activityDate, ActivityType typeOfActivity, decimal cost)
+        //{
+        //    Name = name;
+        //    Description = description;
+        //    ActivityDate = activityDate;
+        //    TypeOfActivity = typeOfActivity;
+        //    Cost = cost;
 
-        }
+        //} No Need
         public Activity()
         {
 
@@ -33,12 +33,12 @@ namespace Assignment
         public int CompareTo(object obj)
         {
             Activity that = (Activity)obj;
-            return this.ActivityDate.CompareTo(that.ActivityDate);
+            return this.ActivityDate.CompareTo(that.ActivityDate); //Sort by Date
         }
 
         public override string ToString()
         {
-            return $"{Name}-{ActivityDate.ToShortDateString()}";
+            return $"{Name}-{ActivityDate.ToShortDateString()}"; // To list boxes
         }
     }
 }
