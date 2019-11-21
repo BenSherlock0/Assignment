@@ -24,6 +24,8 @@ namespace Assignment
         ObservableCollection<Activity> activities = new ObservableCollection<Activity>();
         ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>();
         ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>();
+
+        static decimal TotalCost = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -128,6 +130,8 @@ namespace Assignment
             {
                 activities.Remove(selectedactivity);
                 selectedactivities.Add(selectedactivity);
+                TotalCost += selectedactivity.Cost;
+                txtblkCost.Text = $"€{TotalCost}";
             }
             else
             {
@@ -143,6 +147,8 @@ namespace Assignment
             {
                 selectedactivities.Remove(selectedactivty);
                 activities.Add(selectedactivty);
+                TotalCost -= selectedactivty.Cost;
+                txtblkCost.Text = $"€{TotalCost}";
             }
             else
             {
@@ -187,6 +193,7 @@ namespace Assignment
         private void RbAll_Click(object sender, RoutedEventArgs e)
         {
             filteredactivities.Clear();
+
             if (rbAll.IsChecked == true)
             {
                 lbxAll.ItemsSource = activities;

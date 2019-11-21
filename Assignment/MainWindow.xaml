@@ -21,6 +21,7 @@
         <RadioButton x:Name="rbAir" Content="Air" HorizontalAlignment="Left" Margin="26,208,0,0" VerticalAlignment="Top" Click="RbAll_Click"/>
         <Label Content="Description" HorizontalAlignment="Left" Margin="139,337,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtblkDescription" HorizontalAlignment="Left" Margin="139,363,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="46" Width="400"/>
+        <TextBlock x:Name="txtblkCost" HorizontalAlignment="Left" Margin="653,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
