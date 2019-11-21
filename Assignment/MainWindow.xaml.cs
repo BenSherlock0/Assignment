@@ -179,9 +179,9 @@ namespace Assignment
             {
                 Activity selectedactivty = lbxAll.SelectedItem as Activity;
 
-                string description = selectedactivty.Description;
+                //string description = selectedactivty.Description; old way
 
-                txtblkDescription.Text = description;
+                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
             }
             catch
             {
