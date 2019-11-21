@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <RadioButton Content="All" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbAll" Content="All" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top" Click="RbAll_Click"/>
         <ListBox x:Name="lbxAll" HorizontalAlignment="Left" Height="238" Margin="139,82,0,0" VerticalAlignment="Top" Width="198" SelectionChanged="LbxAll_SelectionChanged"/>
         <ListBox x:Name="lbxSelected" HorizontalAlignment="Left" Height="238" Margin="543,82,0,0" VerticalAlignment="Top" Width="197" SelectionChanged="LbxSelected_SelectionChanged"/>
         <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="403,130,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
@@ -16,9 +16,9 @@
         <Label Content="All activities" HorizontalAlignment="Left" Margin="153,51,0,0" VerticalAlignment="Top"/>
         <Label Content="Selected Activities" HorizontalAlignment="Left" Margin="543,51,0,0" VerticalAlignment="Top"/>
         <Label Content="Total Cost" HorizontalAlignment="Left" Margin="543,18,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Land" HorizontalAlignment="Left" Margin="26,118,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Water" HorizontalAlignment="Left" Margin="26,165,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Air" HorizontalAlignment="Left" Margin="26,208,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbLand" Content="Land" HorizontalAlignment="Left" Margin="26,119,0,0" VerticalAlignment="Top" Click="RbAll_Click"/>
+        <RadioButton x:Name="rbWater" Content="Water" HorizontalAlignment="Left" Margin="26,165,0,0" VerticalAlignment="Top" Click="RbAll_Click"/>
+        <RadioButton x:Name="rbAir" Content="Air" HorizontalAlignment="Left" Margin="26,208,0,0" VerticalAlignment="Top" Click="RbAll_Click"/>
         <Label Content="Description" HorizontalAlignment="Left" Margin="139,337,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtblkDescription" HorizontalAlignment="Left" Margin="139,363,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="46" Width="400"/>
 

@@ -23,6 +23,7 @@ namespace Assignment
     {
         ObservableCollection<Activity> activities = new ObservableCollection<Activity>();
         ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>();
+        ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>();
         public MainWindow()
         {
             InitializeComponent();
@@ -179,6 +180,51 @@ namespace Assignment
             }
             catch
             {
+
+            }
+        }
+
+        private void RbAll_Click(object sender, RoutedEventArgs e)
+        {
+            filteredactivities.Clear();
+            if (rbAll.IsChecked == true)
+            {
+                lbxAll.ItemsSource = activities;
+            }
+            else if(rbLand.IsChecked == true)
+            {
+                foreach(Activity landactivity in activities)
+                {
+                    if(landactivity.TypeOfActivity == ActivityType.Land)
+                    {
+                        filteredactivities.Add(landactivity);
+                        lbxAll.ItemsSource = filteredactivities;
+                    }
+                }
+
+            }
+            else if(rbWater.IsChecked == true)
+            {
+                foreach (Activity wateractivity in activities)
+                {
+                    if (wateractivity.TypeOfActivity == ActivityType.Water)
+                    {
+                        filteredactivities.Add(wateractivity);
+                        lbxAll.ItemsSource = filteredactivities;
+                    }
+                }
+
+            }
+            else if(rbAir.IsChecked == true)
+            {
+                foreach (Activity airactivity in activities)
+                {
+                    if (airactivity.TypeOfActivity == ActivityType.Air)
+                    {
+                        filteredactivities.Add(airactivity);
+                        lbxAll.ItemsSource = filteredactivities;
+                    }
+                }
 
             }
         }
