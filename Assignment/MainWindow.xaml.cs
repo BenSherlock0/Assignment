@@ -128,6 +128,10 @@ namespace Assignment
                 activities.Remove(selectedactivity);
                 selectedactivities.Add(selectedactivity);
             }
+            else
+            {
+                MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
+            }
         }
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
@@ -138,6 +142,10 @@ namespace Assignment
             {
                 selectedactivities.Remove(selectedactivty);
                 activities.Add(selectedactivty);
+            }
+            else
+            {
+                MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
         }
     }
