@@ -145,6 +145,7 @@ namespace Assignment
 
             //clean page
             txtblkCost.Text = $"€{TotalCost}";
+            txtblkDescription.Text = "Please pick an activity.";
             rbAll.IsChecked = true;
 
         }
@@ -157,7 +158,7 @@ namespace Assignment
             {
                 bool dateconflict = false;
                 //Try to stop adding same date
-                foreach (Activity all in selectedactivities) // search for date conflict
+                foreach (Activity all in selectedactivities) //Search for date conflict
                 {
                     if (selectedactivity.ActivityDate == all.ActivityDate)
                     {
