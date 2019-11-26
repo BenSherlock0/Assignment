@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Paul Sherlock S00189970 CA2
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,6 +17,10 @@ using System.Windows.Shapes;
 
 namespace Assignment
 {
+    /*Paul Sherlock
+     * S00189970
+     * CA2 */
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,7 +30,6 @@ namespace Assignment
         ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>(); // added activities into right listbox
         ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>(); // filtered by radio button placed into left listbox
 
-
         static decimal TotalCost = 0; // Count total cost of added activies 
 
         public MainWindow()
@@ -33,6 +37,7 @@ namespace Assignment
             InitializeComponent();
             lbxAll.ItemsSource = activities;
             lbxSelected.ItemsSource = selectedactivities;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -151,7 +156,7 @@ namespace Assignment
             if (selectedactivity != null)
             {
                 bool dateconflict = false;
-                //Try to stop adding by date
+                //Try to stop adding same date
                 foreach (Activity all in selectedactivities) // search for date conflict
                 {
                     if (selectedactivity.ActivityDate == all.ActivityDate)
@@ -175,9 +180,6 @@ namespace Assignment
                     TotalCost += selectedactivity.Cost;
                     txtblkCost.Text = $"€{TotalCost}";
                 }
-
-                //Change to selectedactivies list
-
 
             }
             else //If nothing has been chosen
@@ -207,7 +209,6 @@ namespace Assignment
                 MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
         }
-
 
         private void LbxAll_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -256,7 +257,6 @@ namespace Assignment
                         lbxAll.ItemsSource = filteredactivities;
                     }
                 }
-
             }
             else if (rbWater.IsChecked == true)// Water button
             {
@@ -268,7 +268,6 @@ namespace Assignment
                         lbxAll.ItemsSource = filteredactivities;
                     }
                 }
-
             }
             else if (rbAir.IsChecked == true) //Air button
             {
@@ -280,7 +279,6 @@ namespace Assignment
                         lbxAll.ItemsSource = filteredactivities;
                     }
                 }
-
             }
         }
     }
