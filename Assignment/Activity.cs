@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    public enum ActivityType { Water,Air,Land}
+    public enum ActivityType {Water,Air,Land} //Radio buttons
 
     public class Activity : IComparable
     {
@@ -16,15 +16,6 @@ namespace Assignment
         public ActivityType TypeOfActivity { get; set; }
         public decimal Cost { get; set; }
 
-        //public Activity (string name,string description,DateTime activityDate, ActivityType typeOfActivity, decimal cost)
-        //{
-        //    Name = name;
-        //    Description = description;
-        //    ActivityDate = activityDate;
-        //    TypeOfActivity = typeOfActivity;
-        //    Cost = cost;
-
-        //} No Need
         public Activity()
         {
 

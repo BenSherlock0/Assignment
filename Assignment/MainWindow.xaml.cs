@@ -117,7 +117,8 @@ namespace Assignment
                 ActivityDate = new DateTime(2019, 06, 03),
                 TypeOfActivity = ActivityType.Air,
                 Cost = 200m
-            };//end
+            };
+            //end
 
             //Add to list
             activities.Add(l1);
@@ -147,39 +148,41 @@ namespace Assignment
         {
             Activity selectedactivity = lbxAll.SelectedItem as Activity; //chosen activity from listbox
 
-            if(selectedactivity != null)
+            if (selectedactivity != null)
             {
-
+                bool dateconflict = false;
                 //Try to stop adding by date
-                //foreach (Activity all in selectedactivities)
-                //{
-                //    if (selectedactivity.ActivityDate == all.ActivityDate || selectedactivities == null)
-                //    {
-                //        activities.Remove(selectedactivity);
-                //        filteredactivities.Remove(selectedactivity);
-                //        selectedactivities.Add(selectedactivity);
-                //        TotalCost += selectedactivity.Cost;
-                //        txtblkCost.Text = $"€{TotalCost}";
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("bye");
-                //    }
-                //}
+                foreach (Activity all in selectedactivities) // search for date conflict
+                {
+                    if (selectedactivity.ActivityDate == all.ActivityDate)
+                    {
+                        dateconflict = true;
+                    }
+                }
+
+                if (dateconflict == true)
+                {
+                    MessageBox.Show("Date Conflict");
+                }
+                else//if no conflict
+                {
+                    //Change to selectedactivies list
+                    activities.Remove(selectedactivity);
+                    filteredactivities.Remove(selectedactivity);
+                    selectedactivities.Add(selectedactivity);
+
+                    //Change total cost
+                    TotalCost += selectedactivity.Cost;
+                    txtblkCost.Text = $"€{TotalCost}";
+                }
 
                 //Change to selectedactivies list
-                activities.Remove(selectedactivity);
-                filteredactivities.Remove(selectedactivity);
-                selectedactivities.Add(selectedactivity);
 
-                //Change total cost
-                TotalCost += selectedactivity.Cost;
-                txtblkCost.Text = $"€{TotalCost}";
 
             }
             else //If nothing has been chosen
             {
-                MessageBox.Show("Nothing has been selected.\nPlease select a activity."); 
+                MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
 
         }
@@ -188,9 +191,9 @@ namespace Assignment
         {
             Activity selectedactivty = lbxSelected.SelectedItem as Activity;
 
-            if(selectedactivty != null)
+            if (selectedactivty != null)
             {
-                //Change to activies list
+                //Change to activities list
                 selectedactivities.Remove(selectedactivty);
                 filteredactivities.Remove(selectedactivty);
                 activities.Add(selectedactivty);
@@ -212,7 +215,7 @@ namespace Assignment
             {
                 Activity selectedactivty = lbxAll.SelectedItem as Activity;
 
-                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
+                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}"; //Show description
             }
             catch
             {
@@ -227,7 +230,7 @@ namespace Assignment
             {
                 Activity selectedactivty = lbxSelected.SelectedItem as Activity;
 
-                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
+                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}"; //Show description
             }
             catch
             {
@@ -243,11 +246,11 @@ namespace Assignment
             {
                 lbxAll.ItemsSource = activities;
             }
-            else if(rbLand.IsChecked == true) //Land button
+            else if (rbLand.IsChecked == true) //Land button
             {
-                foreach(Activity landactivity in activities)
+                foreach (Activity landactivity in activities)
                 {
-                    if(landactivity.TypeOfActivity == ActivityType.Land)
+                    if (landactivity.TypeOfActivity == ActivityType.Land)
                     {
                         filteredactivities.Add(landactivity);
                         lbxAll.ItemsSource = filteredactivities;
@@ -255,7 +258,7 @@ namespace Assignment
                 }
 
             }
-            else if(rbWater.IsChecked == true)// Water button
+            else if (rbWater.IsChecked == true)// Water button
             {
                 foreach (Activity wateractivity in activities)
                 {
@@ -267,7 +270,7 @@ namespace Assignment
                 }
 
             }
-            else if(rbAir.IsChecked == true) //Air button
+            else if (rbAir.IsChecked == true) //Air button
             {
                 foreach (Activity airactivity in activities)
                 {
