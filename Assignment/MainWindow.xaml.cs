@@ -27,14 +27,12 @@ namespace Assignment
         
 
         static decimal TotalCost = 0;
+
         public MainWindow()
         {
             InitializeComponent();
             lbxAll.ItemsSource = activities;
             lbxSelected.ItemsSource = selectedactivities;
-
-
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -135,6 +133,7 @@ namespace Assignment
             activities = new ObservableCollection<Activity>(sorted);
             lbxAll.ItemsSource = null;
             lbxAll.ItemsSource = activities;
+            txtblkCost.Text = $"€{TotalCost}";
 
         }
 
@@ -144,15 +143,21 @@ namespace Assignment
 
             if(selectedactivity != null)
             {
+
                 activities.Remove(selectedactivity);
+                filteredactivities.Remove(selectedactivity);
                 selectedactivities.Add(selectedactivity);
                 TotalCost += selectedactivity.Cost;
                 txtblkCost.Text = $"€{TotalCost}";
+
+
+
             }
             else
             {
                 MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
+
         }
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
@@ -162,6 +167,7 @@ namespace Assignment
             if(selectedactivty != null)
             {
                 selectedactivities.Remove(selectedactivty);
+                filteredactivities.Remove(selectedactivty);
                 activities.Add(selectedactivty);
                 TotalCost -= selectedactivty.Cost;
                 txtblkCost.Text = $"€{TotalCost}";
@@ -196,9 +202,9 @@ namespace Assignment
             {
                 Activity selectedactivty = lbxSelected.SelectedItem as Activity;
 
-                string description = selectedactivty.Description;
+                // string description = selectedactivty.Description;
 
-                txtblkDescription.Text = description;
+                txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
             }
             catch
             {
