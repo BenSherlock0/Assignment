@@ -21,12 +21,12 @@ namespace Assignment
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Activity> activities = new ObservableCollection<Activity>();
-        ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>();
-        ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>();
-        
+        ObservableCollection<Activity> activities = new ObservableCollection<Activity>(); // All placed into left listbox
+        ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>(); // added activities into right listbox
+        ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>(); // filtered by radio button placed into left listbox
 
-        static decimal TotalCost = 0;
+
+        static decimal TotalCost = 0; // Count total cost of added activies 
 
         public MainWindow()
         {
@@ -37,6 +37,7 @@ namespace Assignment
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //List of Activities
             Activity l1 = new Activity()
             {
                 Name = "Treking",
@@ -116,8 +117,9 @@ namespace Assignment
                 ActivityDate = new DateTime(2019, 06, 03),
                 TypeOfActivity = ActivityType.Air,
                 Cost = 200m
-            };
+            };//end
 
+            //Add to list
             activities.Add(l1);
             activities.Add(l2);
             activities.Add(l3);
@@ -128,34 +130,56 @@ namespace Assignment
             activities.Add(a2);
             activities.Add(a3);
 
+            //sort Activities by date
             List<Activity> sorted = activities.ToList();
             sorted.Sort();
             activities = new ObservableCollection<Activity>(sorted);
             lbxAll.ItemsSource = null;
             lbxAll.ItemsSource = activities;
+
+            //clean page
             txtblkCost.Text = $"€{TotalCost}";
+            rbAll.IsChecked = true;
 
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Activity selectedactivity = lbxAll.SelectedItem as Activity;
+            Activity selectedactivity = lbxAll.SelectedItem as Activity; //chosen activity from listbox
 
             if(selectedactivity != null)
             {
 
+                //Try to stop adding by date
+                //foreach (Activity all in selectedactivities)
+                //{
+                //    if (selectedactivity.ActivityDate == all.ActivityDate || selectedactivities == null)
+                //    {
+                //        activities.Remove(selectedactivity);
+                //        filteredactivities.Remove(selectedactivity);
+                //        selectedactivities.Add(selectedactivity);
+                //        TotalCost += selectedactivity.Cost;
+                //        txtblkCost.Text = $"€{TotalCost}";
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("bye");
+                //    }
+                //}
+
+                //Change to selectedactivies list
                 activities.Remove(selectedactivity);
                 filteredactivities.Remove(selectedactivity);
                 selectedactivities.Add(selectedactivity);
+
+                //Change total cost
                 TotalCost += selectedactivity.Cost;
                 txtblkCost.Text = $"€{TotalCost}";
 
-
-
             }
-            else
+            else //If nothing has been chosen
             {
-                MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
+                MessageBox.Show("Nothing has been selected.\nPlease select a activity."); 
             }
 
         }
@@ -166,13 +190,16 @@ namespace Assignment
 
             if(selectedactivty != null)
             {
+                //Change to activies list
                 selectedactivities.Remove(selectedactivty);
                 filteredactivities.Remove(selectedactivty);
                 activities.Add(selectedactivty);
+
+                //Change total cost
                 TotalCost -= selectedactivty.Cost;
                 txtblkCost.Text = $"€{TotalCost}";
             }
-            else
+            else //If nothing has been chosen
             {
                 MessageBox.Show("Nothing has been selected.\nPlease select a activity.");
             }
@@ -184,8 +211,6 @@ namespace Assignment
             try
             {
                 Activity selectedactivty = lbxAll.SelectedItem as Activity;
-
-                //string description = selectedactivty.Description; old way
 
                 txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
             }
@@ -202,8 +227,6 @@ namespace Assignment
             {
                 Activity selectedactivty = lbxSelected.SelectedItem as Activity;
 
-                // string description = selectedactivty.Description;
-
                 txtblkDescription.Text = $"{selectedactivty.Description} Cost - €{selectedactivty.Cost}";
             }
             catch
@@ -214,13 +237,13 @@ namespace Assignment
 
         private void RbAll_Click(object sender, RoutedEventArgs e)
         {
-            filteredactivities.Clear();
+            filteredactivities.Clear(); //Clear list to stop repeats
 
-            if (rbAll.IsChecked == true)
+            if (rbAll.IsChecked == true) //All Button
             {
                 lbxAll.ItemsSource = activities;
             }
-            else if(rbLand.IsChecked == true)
+            else if(rbLand.IsChecked == true) //Land button
             {
                 foreach(Activity landactivity in activities)
                 {
@@ -232,7 +255,7 @@ namespace Assignment
                 }
 
             }
-            else if(rbWater.IsChecked == true)
+            else if(rbWater.IsChecked == true)// Water button
             {
                 foreach (Activity wateractivity in activities)
                 {
@@ -244,7 +267,7 @@ namespace Assignment
                 }
 
             }
-            else if(rbAir.IsChecked == true)
+            else if(rbAir.IsChecked == true) //Air button
             {
                 foreach (Activity airactivity in activities)
                 {
