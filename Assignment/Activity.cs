@@ -29,7 +29,7 @@ namespace Assignment
 
         public override string ToString()
         {
-            return $"{Name}-{ActivityDate.ToShortDateString()}"; // To list boxes
+            return $"{Name}-{ActivityDate.ToShortDateString()}"; //To list boxes
         }
     }
 }

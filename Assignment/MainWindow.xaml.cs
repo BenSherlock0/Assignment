@@ -30,18 +30,19 @@ namespace Assignment
         ObservableCollection<Activity> selectedactivities = new ObservableCollection<Activity>(); // added activities into right listbox
         ObservableCollection<Activity> filteredactivities = new ObservableCollection<Activity>(); // filtered by radio button placed into left listbox
 
-        static decimal TotalCost = 0; // Count total cost of added activies 
+        static decimal TotalCost = 0m; // Count total cost of added activies 
 
         public MainWindow()
         {
             InitializeComponent();
-            lbxAll.ItemsSource = activities;
-            lbxSelected.ItemsSource = selectedactivities;
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Listboxes
+            lbxAll.ItemsSource = activities;
+            lbxSelected.ItemsSource = selectedactivities;
+
             //List of Activities
             Activity l1 = new Activity()
             {
@@ -145,12 +146,12 @@ namespace Assignment
 
             //clean page
             txtblkCost.Text = $"€{TotalCost}";
-            txtblkDescription.Text = "Please pick an activity.";
+            txtblkDescription.Text = "Please pick an activity";
             rbAll.IsChecked = true;
 
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e) //>>
         {
             Activity selectedactivity = lbxAll.SelectedItem as Activity; //chosen activity from listbox
 
@@ -190,7 +191,7 @@ namespace Assignment
 
         }
 
-        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        private void BtnRemove_Click(object sender, RoutedEventArgs e) //<<
         {
             Activity selectedactivty = lbxSelected.SelectedItem as Activity;
 
